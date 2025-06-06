@@ -17,7 +17,15 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const { addToCart } = useCart()
 
   const handleAddToCart = () => {
-    addToCart(product)
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image:
+        product.images[0]?.startsWith("http")
+          ? product.images[0]
+          : "https://via.placeholder.com/300x300?text=No+Image",
+    })
     alert(`${product.title} berhasil dimasukkan ke keranjang!`)
   }
 
