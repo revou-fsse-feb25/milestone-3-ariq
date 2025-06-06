@@ -25,7 +25,7 @@ export default function CartPage() {
                 <img src={item.image} alt={item.title} className="h-20 w-20 object-contain" />
                 <div>
                   <h2 className="font-semibold">{item.title}</h2>
-                  <p className="text-green-600 font-bold">Rp {item.price}</p>
+                  <p className="text-green-600 font-bold">$ {item.price}</p>
                 </div>
               </div>
             ))}

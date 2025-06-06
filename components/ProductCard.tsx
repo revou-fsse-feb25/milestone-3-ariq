@@ -18,7 +18,7 @@ export default function ProductCard({ id, title, price, image }: ProductCardProp
           className="h-40 w-full object-contain mb-4"
         />
         <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-green-600 font-bold">Rp {price}</p>
+        <p className="text-green-600 font-bold">${price}</p>
       </div>
     </Link>
   )

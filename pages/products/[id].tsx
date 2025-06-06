@@ -44,7 +44,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         />
         <h1 className="text-3xl font-bold mt-6">{product.title}</h1>
         <p className="mt-4 text-gray-600">{product.description}</p>
-        <p className="mt-4 text-2xl text-green-600 font-semibold">Rp {product.price}</p>
+        <p className="mt-4 text-2xl text-green-600 font-semibold">${product.price}</p>
 
         <button
           onClick={handleAddToCart}
