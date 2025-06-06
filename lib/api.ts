@@ -1,3 +1,4 @@
+// Ambil semua produk untuk homepage
 export async function fetchProducts() {
   const res = await fetch("https://api.escuelajs.co/api/v1/products")
   if (!res.ok) throw new Error("Failed to fetch products")
@@ -21,9 +22,17 @@ export async function fetchProducts() {
       id: product.id,
       title: product.title,
       price: product.price,
-      image, // langsung pakai yang udah difilter
+      description: product.description,
+      images: [image],
     }
   })
 
   return updated
+}
+
+
+export async function fetchProductById(id: string) {
+  const res = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
+  if (!res.ok) throw new Error("Failed to fetch product detail")
+  return await res.json()
 }

@@ -1,9 +1,19 @@
-import { GetServerSideProps } from 'next'
-import { fetchProductById } from '../../lib/api'
-import Navbar from '../../components/navbar'
-import { useCart } from '../../context/CartContext'
+import { GetServerSideProps } from "next"
+import { fetchProductById } from "../../lib/api"
+import Navbar from "../../components/navbar"
+import { useCart } from "../../context/CartContext"
 
-export default function ProductDetail({ product }: { product: any }) {
+interface ProductDetailProps {
+  product: {
+    id: number
+    title: string
+    price: number
+    description: string
+    images: string[]
+  }
+}
+
+export default function ProductDetail({ product }: ProductDetailProps) {
   const { addToCart } = useCart()
 
   const handleAddToCart = () => {
@@ -14,17 +24,25 @@ export default function ProductDetail({ product }: { product: any }) {
   return (
     <>
       <Navbar />
-      <div className="p-8 max-w-xl mx-auto">
-        <img src={product.image} alt={product.title} className="h-60 mx-auto object-contain" />
-        <h1 className="text-2xl font-bold mt-4">{product.title}</h1>
-        <p className="mt-2 text-gray-700">{product.description}</p>
-        <p className="mt-4 text-green-600 font-bold text-xl">Rp {product.price}</p>
+      <div className="p-8 max-w-3xl mx-auto">
+        <img
+          src={
+            product.images[0]?.startsWith("http")
+              ? product.images[0]
+              : "https://via.placeholder.com/300x300?text=No+Image"
+          }
+          alt={product.title}
+          className="w-full h-72 object-contain rounded-lg bg-white shadow"
+        />
+        <h1 className="text-3xl font-bold mt-6">{product.title}</h1>
+        <p className="mt-4 text-gray-600">{product.description}</p>
+        <p className="mt-4 text-2xl text-green-600 font-semibold">Rp {product.price}</p>
 
         <button
           onClick={handleAddToCart}
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
-          Add to Cart
+          Tambah ke Keranjang
         </button>
       </div>
     </>
@@ -34,5 +52,8 @@ export default function ProductDetail({ product }: { product: any }) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params?.id as string
   const product = await fetchProductById(id)
-  return { props: { product } }
+
+  return {
+    props: { product },
+  }
 }
