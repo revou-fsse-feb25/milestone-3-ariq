@@ -2,10 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/products/[id]": "pages/products/[id].js",
-  "/cart": "pages/cart.js",
   "/": "pages/index.js",
   "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/cart": "pages/cart.js",
   "/checkout": "pages/checkout.js",
-  "/admin": "pages/admin.js"
+  "/checkout-success": "pages/checkout-success.js"
 }

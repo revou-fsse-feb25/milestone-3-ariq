@@ -1,3 +1,5 @@
+"use client"
+
 import { useCart } from "../context/CartContext"
 import Link from "next/link"
 
@@ -11,30 +13,32 @@ export default function CartPage() {
         <p className="text-gray-600">Keranjang kosong</p>
       ) : (
         <>
-          {cart.map((item, index) => (
+          {cart.map((item) => (
             <div
-              key={index}
+              key={item.product.id}
               className="bg-white p-4 mb-4 rounded shadow"
             >
-              <p className="font-semibold">{item.title}</p>
-              <p>${item.price.toFixed(2)}</p>
+              <p className="font-semibold">{item.product.title}</p>
+              <p>${item.product.price.toFixed(2)}</p>
+
               <div className="flex items-center space-x-2 mt-2">
                 <button
-                  onClick={() => decreaseQty(item.id)}
+                  onClick={() => decreaseQty(item.product.id)}
                   className="px-2 py-1 bg-gray-200 rounded"
                 >
                   -
                 </button>
                 <span>{item.quantity}</span>
                 <button
-                  onClick={() => increaseQty(item.id)}
+                  onClick={() => increaseQty(item.product.id)}
                   className="px-2 py-1 bg-gray-200 rounded"
                 >
                   +
                 </button>
               </div>
+
               <button
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => removeFromCart(item.product.id)}
                 className="text-red-500 mt-2"
               >
                 Hapus

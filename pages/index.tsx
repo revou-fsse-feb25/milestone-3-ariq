@@ -16,17 +16,16 @@ export default function Home({ products }: { products: any[] }) {
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products.map((product) => (
               <ProductCard
-                 key={product.id}
-                 id={product.id}
-                 title={product.title}
-                 price={product.price}
-                 image={
-                   product.images?.[0]?.startsWith("http")
-                     ? product.images[0]
-                     : "https://via.placeholder.com/300x300?text=No+Image"
-                       }
-/>
-
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                image={
+                  product.images?.[0]?.startsWith("http")
+                    ? product.images[0]
+                    : "https://via.placeholder.com/300x300?text=No+Image"
+                }
+              />
             ))}
           </div>
         </div>
@@ -37,5 +36,8 @@ export default function Home({ products }: { products: any[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const products = await fetchProducts()
-  return { props: { products } }
+  return {
+    props: { products },
+    revalidate: 10,
+  }
 }
