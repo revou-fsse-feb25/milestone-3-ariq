@@ -1,6 +1,6 @@
 # 🛒 RevoShop – E-Commerce Mini Project
 
-RevoShop adalah aplikasi e-commerce sederhana yang dibangun dengan Next.js (Pages Router) sebagai bagian dari final project bootcamp. Aplikasi ini memungkinkan user untuk melihat produk, menambahkannya ke keranjang, melakukan checkout, serta menyediakan dashboard admin untuk kelola produk dan pesanan.
+RevoShop adalah aplikasi e-commerce sederhana sebagai bagian dari milestone project bootcamp. Aplikasi ini memungkinkan user untuk melihat produk, menambahkannya ke keranjang, melakukan checkout, serta menyediakan dashboard admin untuk kelola produk dan pesanan.
 
 ---
 
@@ -20,21 +20,6 @@ RevoShop adalah aplikasi e-commerce sederhana yang dibangun dengan Next.js (Page
 - Lihat seluruh pesanan: `/admin/orders`
 - CRUD produk: tambah, edit, hapus produk via form di `/admin/products`
 - Halaman menu admin: `/admin` sebagai navigasi admin
-
-### 🔧 API Routes
-- `/api/products`: GET & POST produk
-- `/api/products/[id]`: PUT & DELETE produk
-- Backend disimulasikan dengan array lokal (`productStore.ts`)
-
-### 🔁 ISR & Optimization
-- Homepage pakai `getStaticProps` + `revalidate: 10` untuk ISR
-- Struktur rapi & ringan dengan Tailwind CSS
-
----
-
-## 🧪 Testing
-- Setup Jest + React Testing Library
-- Contoh unit test pada komponen `ProductCard`
 
 ---
 
